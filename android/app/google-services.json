@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "140441350608",
+    "firebase_url": "https://make-interview-33dcb.firebaseio.com",
+    "project_id": "make-interview-33dcb",
+    "storage_bucket": "make-interview-33dcb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:140441350608:android:77984b9196c9c14a7789d5",
+        "android_client_info": {
+          "package_name": "com.example.makestories_interview"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "140441350608-tm145531a7vd9svliqmrk5hcclddggrq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.makestories_interview",
+            "certificate_hash": "7b07940e2eb99be5290b99421bd0363cd5438b30"
+          }
+        },
+        {
+          "client_id": "140441350608-e00tcuijmdopip51slm6sr8bh2vcivut.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNkMAlITkM0AU_4xBcxou29FmgQ8X9cjY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "140441350608-e00tcuijmdopip51slm6sr8bh2vcivut.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
