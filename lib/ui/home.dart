@@ -52,20 +52,19 @@ class _HomeScreenState extends State<HomeScreen> {
           Container(
             margin: EdgeInsets.only(top: 30, bottom: 30),
             alignment: Alignment.center,
-            child: Text('about you',
-                style: GoogleFonts.lato(
-                    fontSize: 25, fontWeight: FontWeight.w500)),
+            child: Text('About you',
+                style: GoogleFonts.workSans(
+                    fontSize: 30, fontWeight: FontWeight.w600)),
           ),
           FutureBuilder(
             future: getData(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Center(
-                    child: Container(
                   child: Text('Getting data',
-                      style: GoogleFonts.lato(
-                          fontSize: 20, fontWeight: FontWeight.w800)),
-                ));
+                      style: GoogleFonts.workSans(
+                          fontSize: 20, fontWeight: FontWeight.w700)),
+                );
               } else {
                 return Container(
                   margin: EdgeInsets.all(15),
@@ -126,8 +125,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       Container(
                         margin: EdgeInsets.only(
-                            top: 40, left: 20, right: 20, bottom: 10),
-                        width: 300,
+                            top: 80, left: 20, right: 20, bottom: 10),
+                        width: 350,
                         height: 60,
                         child: RaisedButton(
                           onPressed: updateData,
@@ -135,13 +134,14 @@ class _HomeScreenState extends State<HomeScreen> {
                           elevation: 0,
                           child: Text(
                             'Update Info',
-                            style: GoogleFonts.lato(
-                                fontSize: 30, fontWeight: FontWeight.w400),
+                            style: GoogleFonts.workSans(
+                              color: Color.fromRGBO(9, 68, 93, 1),
+                                fontSize: 25, fontWeight: FontWeight.w600),
                           ),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12),
                               side: BorderSide(
-                                  color: Color.fromRGBO(70, 206, 206, 1),
+                                  color: Color.fromRGBO(9, 68, 93, 1),
                                   width: 3)),
                         ),
                       )
@@ -154,15 +154,14 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(
-        label: Text(
-          'Logout',
-          style: GoogleFonts.lato(
+        label: Text('Logout',
+            style: GoogleFonts.workSans(
               fontSize: 20,
               fontWeight: FontWeight.w700,
-              color: Color.fromRGBO(70, 206, 206, 1)),
-        ),
+              color: Colors.white,
+            )),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        backgroundColor: Colors.black,
+        backgroundColor: Color.fromRGBO(9, 68, 93, 1),
         onPressed: () {
           FirebaseAuth.instance.signOut();
           Navigator.pushAndRemoveUntil(
