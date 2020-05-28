@@ -41,38 +41,38 @@ class _LoginScreenState extends State<LoginScreen> {
       body: ListView(
         children: <Widget>[
           Container(
-              margin: EdgeInsets.only(left: 55, top: 40),
-              child: Text('hello\nthere,',
-                  style: GoogleFonts.lato(
-                      fontSize: 85, fontWeight: FontWeight.w300))),
+              margin: EdgeInsets.only(left: 25, top: 60),
+              child: Text('Hello\nThere',
+                  style: GoogleFonts.workSans(
+                      fontSize: 85, fontWeight: FontWeight.w500))),
           Form(
             key: _formState,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
-                    width: 300,
+                    width: 350,
                     margin: EdgeInsets.only(
-                        top: 60, bottom: 10, right: 30, left: 30),
+                        top: 140, bottom: 10, right: 30, left: 30),
                     child: TextFormField(
                       controller: emailController,
                       keyboardType: TextInputType.emailAddress,
-                      cursorColor: Color.fromRGBO(70, 206, 206, 1),
+                      cursorColor: Color.fromRGBO(9, 68, 93, 1),
                       decoration: InputDecoration(
                           labelText: 'Enter your email',
-                          labelStyle: GoogleFonts.lato(
-                              fontSize: 12, fontWeight: FontWeight.w300),
+                          labelStyle: GoogleFonts.workSans(
+                              fontSize: 18, fontWeight: FontWeight.w300),
                           filled: true,
                           fillColor: Colors.white,
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12),
                               borderSide: BorderSide(
-                                color: Color.fromRGBO(70, 206, 206, 1),
+                                color: Color.fromRGBO(9, 68, 93, 1),
                               )),
-                          focusColor: Color.fromRGBO(70, 206, 206, 1),
+                          focusColor: Color.fromRGBO(9, 68, 93, 1),
                           prefixIcon: Icon(
                             Icons.mail,
-                            color: Color.fromRGBO(70, 206, 206, 1),
+                            color: Color.fromRGBO(9, 68, 93, 1),
                           ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
@@ -80,29 +80,29 @@ class _LoginScreenState extends State<LoginScreen> {
                           )),
                     )),
                 Container(
-                    width: 300,
+                    width: 350,
                     margin: EdgeInsets.only(
                         top: 5, bottom: 10, right: 30, left: 30),
                     child: TextFormField(
-                      cursorColor: Color.fromRGBO(70, 206, 206, 1),
+                      cursorColor: Color.fromRGBO(9, 68, 93, 1),
                       controller: passwordController,
                       keyboardType: TextInputType.text,
                       obscureText: true,
                       decoration: InputDecoration(
                           labelText: 'Enter your password',
-                          labelStyle: GoogleFonts.lato(
-                              fontSize: 12, fontWeight: FontWeight.w300),
+                          labelStyle: GoogleFonts.workSans(
+                              fontSize: 18, fontWeight: FontWeight.w300),
                           filled: true,
                           fillColor: Colors.white,
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12),
                               borderSide: BorderSide(
-                                color: Color.fromRGBO(70, 206, 206, 1),
+                                color: Color.fromRGBO(9, 68, 93, 1),
                               )),
-                          focusColor: Color.fromRGBO(70, 206, 206, 1),
+                          focusColor: Color.fromRGBO(9, 68, 93, 1),
                           prefixIcon: Icon(
                             Icons.vpn_key,
-                            color: Color.fromRGBO(70, 206, 206, 1),
+                            color: Color.fromRGBO(9, 68, 93, 1),
                           ),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12),
@@ -111,53 +111,48 @@ class _LoginScreenState extends State<LoginScreen> {
                     )),
                 Container(
                   margin:
-                      EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 10),
-                  width: 300,
-                  height: 80,
+                      EdgeInsets.only(top: 50, left: 20, right: 20, bottom: 10),
+                  width: 350,
+                  height: 70,
                   child: RaisedButton(
                     onPressed: login,
                     color: Colors.white,
                     elevation: 0,
                     child: Text(
                       'Login',
-                      style: GoogleFonts.lato(
-                          fontSize: 30, fontWeight: FontWeight.w400),
+                      style: GoogleFonts.workSans(
+                          fontSize: 25, fontWeight: FontWeight.w600),
                     ),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
                         side: BorderSide(
-                            color: Color.fromRGBO(70, 206, 206, 1), width: 3)),
+                            color: Color.fromRGBO(9, 68, 93, 1), width: 3)),
+                  ),
+                ),
+                Container(
+                  margin:
+                      EdgeInsets.only(top: 10, left: 20, right: 20, bottom: 5),
+                  width: 350,
+                  height: 70,
+                  child: RaisedButton(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (BuildContext context) => SignUpScreen()));
+                    },
+                    color: Color.fromRGBO(9, 68, 93, 1),
+                    elevation: 0,
+                    child: Text('Sign Up',
+                        style: GoogleFonts.workSans(
+                            color: Colors.white, fontSize: 25, fontWeight: FontWeight.w600)),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        side: BorderSide(
+                            color: Color.fromRGBO(9, 68, 93, 1), width: 3)),
                   ),
                 )
               ],
             ),
           ),
-          Container(
-              alignment: Alignment.center,
-              margin: EdgeInsets.only(top: 40, bottom: 15),
-              child: Text('new here?',
-                  style: GoogleFonts.lato(
-                      fontSize: 20, fontWeight: FontWeight.w700))),
-          Container(
-            margin: EdgeInsets.only(top: 20, left: 50, right: 50, bottom: 10),
-            width: 280,
-            height: 80,
-            child: RaisedButton(
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => SignUpScreen()));
-              },
-              color: Colors.white,
-              elevation: 0,
-              child: Text('Sign Up',
-                  style: GoogleFonts.lato(
-                      fontSize: 30, fontWeight: FontWeight.w400)),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  side: BorderSide(
-                      color: Color.fromRGBO(70, 206, 206, 1), width: 3)),
-            ),
-          )
         ],
       ),
     );
