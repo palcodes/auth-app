@@ -245,7 +245,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
               height: 60,
               child: RaisedButton(
                 onPressed: () async {
-                  AuthService().signUp(emailController.text, passwordController.text);
+                  AuthService().signUp(
+                      nameController.text,
+                      emailController.text,
+                      passwordController.text,
+                      numberController.text,
+                      ageController.text);
                 },
                 color: Color.fromRGBO(9, 68, 93, 1),
                 elevation: 0,
