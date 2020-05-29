@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:makestories_interview/abstractions/auth.dart';
+import 'package:makestories_interview/abstractions/user.dart';
 import 'package:makestories_interview/ui/home.dart';
 import 'package:makestories_interview/ui/signup.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -14,28 +16,30 @@ class _LoginScreenState extends State<LoginScreen> {
   final FirebaseAuth auth = FirebaseAuth.instance;
   final _formState = GlobalKey<FormState>();
 
+  final AuthService _authService = new AuthService();
+
   TextEditingController emailController = new TextEditingController();
   TextEditingController passwordController = new TextEditingController();
   bool success;
 
   PanelController panelController = new PanelController();
 
-  void login() async {
-    final FirebaseUser user = (await auth.signInWithEmailAndPassword(
-      email: emailController.text,
-      password: passwordController.text,
-    ))
-        .user;
+  // void login() async {
+  //   final FirebaseUser user = (await auth.signInWithEmailAndPassword(
+  //     email: emailController.text,
+  //     password: passwordController.text,
+  //   ))
+  //       .user;
 
-    if (user != null) {
-      success = true;
-      print('LOGGED IN');
-      Navigator.of(context).push(
-          MaterialPageRoute(builder: (BuildContext context) => HomeScreen()));
-    } else {
-      success = false;
-    }
-  }
+  //   if (user != null) {
+  //     success = true;
+  //     print('LOGGED IN');
+  //     Navigator.of(context).push(
+  //         MaterialPageRoute(builder: (BuildContext context) => HomeScreen()));
+  //   } else {
+  //     success = false;
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -134,7 +138,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     width: 350,
                     height: 70,
                     child: RaisedButton(
-                      onPressed: login,
+                      onPressed: () async {
+                        dynamic result = await _authService
+                            .login()
+                            .catchError((e) => {print(e.toString())});
+                        print('USER: ' + result.uid);
+                      },
                       color: Colors.white,
                       elevation: 0,
                       child: Text(
