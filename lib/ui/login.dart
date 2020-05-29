@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:makestories_interview/abstractions/auth.dart';
 import 'package:makestories_interview/abstractions/user.dart';
 import 'package:makestories_interview/ui/home.dart';
@@ -64,7 +65,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         controller: emailController,
                         keyboardType: TextInputType.emailAddress,
                         validator: (value) =>
-                            value.isEmpty || value.contains('@') == false ? 'Enter correct email' : null,
+                            value.isEmpty || value.contains('@') == false
+                                ? 'Enter correct email'
+                                : null,
                         cursorColor: Color.fromRGBO(9, 68, 93, 1),
                         decoration: InputDecoration(
                             labelText: 'Enter your email',
@@ -128,9 +131,20 @@ class _LoginScreenState extends State<LoginScreen> {
                       onPressed: () async {
                         if (_formState.currentState.validate()) {
                           dynamic result = await _authService
-                              .login(emailController.text, passwordController.text)
+                              .login(
+                                  emailController.text, passwordController.text)
                               .catchError((e) => {print(e.toString())});
-                          print('USER: ' + result.uid);
+                          if (result == null) {
+                            return Fluttertoast.showToast(
+                                msg: "Cannot proceed with those credentials",
+                                backgroundColor: Colors.white,
+                                fontSize: 18,
+                                gravity: ToastGravity.BOTTOM,
+                                textColor: Color.fromRGBO(9, 68, 93, 1),
+                                toastLength: Toast.LENGTH_LONG);
+                          } else {
+                            return null;
+                          }
                         } else {
                           return null;
                         }
