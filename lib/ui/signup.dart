@@ -52,31 +52,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return null;
   }
 
-  void signUp() async {
-    bool isValidated = _formKey.currentState.validate();
-    if (isValidated == true) {
-      final FirebaseUser user = (await auth.createUserWithEmailAndPassword(
-              email: emailController.text, password: passwordController.text))
-          .user;
-      String userId = user.uid;
-
-      Navigator.of(context).push(
-          MaterialPageRoute(builder: (BuildContext context) => HomeScreen()));
-
-      await Firestore.instance.collection('users').document(userId).setData({
-        'name': nameController.text,
-        'email': emailController.text,
-        'number': numberController.text,
-        'age': ageController.text,
-        'created': FieldValue.serverTimestamp()
-      }).then((a) {
-        print('USER CREATED');
-      });
-    } else {
-      print('Error');
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return ListView(children: <Widget>[
