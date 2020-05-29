@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:makestories_interview/abstractions/database.dart';
 import 'package:makestories_interview/abstractions/user.dart';
@@ -44,7 +45,32 @@ class _HomeScreenState extends State<HomeScreen> {
       values["number"] = numberController.text;
     if (ageController.text.isEmpty != null && ageController.text.isNotEmpty)
       values["age"] = ageController.text;
-    Firestore.instance.collection('users').document(userId).updateData(values);
+    Firestore.instance
+        .collection('users')
+        .document(userId)
+        .updateData(values)
+        .catchError((e) => {
+              if (e != null)
+                {
+                  Fluttertoast.showToast(
+                      msg: e.toString(),
+                      backgroundColor: Colors.white,
+                      fontSize: 15,
+                      gravity: ToastGravity.BOTTOM,
+                      toastLength: Toast.LENGTH_SHORT,
+                      textColor: Color.fromRGBO(9, 68, 93, 1))
+                }
+              else
+                {
+                  Fluttertoast.showToast(
+                      msg: 'User Data updated successfully',
+                      backgroundColor: Colors.white,
+                      fontSize: 18,
+                      gravity: ToastGravity.BOTTOM,
+                      toastLength: Toast.LENGTH_SHORT,
+                      textColor: Color.fromRGBO(9, 68, 93, 1))
+                }
+            });
   }
 
   @override

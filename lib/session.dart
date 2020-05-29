@@ -12,11 +12,10 @@ class Session extends StatefulWidget {
 class _SessionState extends State<Session> {
   @override
   Widget build(BuildContext context) {
-
     // User login session management
     final user = Provider.of<User>(context);
-    
-    if( user == null ) {
+
+    if (user == null) {
       return LoginScreen();
     } else {
       return HomeScreen();
