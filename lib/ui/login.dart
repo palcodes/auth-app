@@ -130,7 +130,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: RaisedButton(
                       onPressed: () async {
                         if (_formState.currentState.validate()) {
-                          dynamic result = await _authService
+                           User result = await _authService
                               .login(
                                   emailController.text, passwordController.text)
                               .catchError((e) => {print(e.toString())});

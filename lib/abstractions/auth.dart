@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:makestories_interview/abstractions/database.dart';
 import 'package:makestories_interview/abstractions/user.dart';
 
 class AuthService {
@@ -19,20 +20,18 @@ class AuthService {
   }
 
   // Sign up with Email
-  Future signUp(String email, String password) async {
+  Future<User> signUp(String name, String email, String number, String password,
+      String age) async {
     AuthResult authResult = await _auth
         .createUserWithEmailAndPassword(email: email, password: password)
         .catchError((e) => {print(e.toString())});
     FirebaseUser user = authResult.user;
+    await DatabaseService().storeUserData(name, email, number, age);
     return _user(user);
   }
 
-  void storeUserData(String name, String email, String number, String age) {
-
-  }
-
   // Sign in With Password
-  Future login(String email, String password) async {
+  Future<User> login(String email, String password) async {
     AuthResult authResult = await _auth
         .signInWithEmailAndPassword(email: email, password: password)
         .catchError((e) => {print(e.toString())});
