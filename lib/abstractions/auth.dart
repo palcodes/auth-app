@@ -19,20 +19,29 @@ class AuthService {
   }
 
   // Sign up with Email
-  Future signUp() async {
+  Future signUp(String email, String password) async {
     AuthResult authResult = await _auth
-        .createUserWithEmailAndPassword(email: null, password: null)
+        .createUserWithEmailAndPassword(email: email, password: password)
         .catchError((e) => {print(e.toString())});
     FirebaseUser user = authResult.user;
-    return user;
+    return _user(user);
+  }
+
+  void storeUserData(String name, String email, String number, String age) {
+
   }
 
   // Sign in With Password
-  Future login() async {
+  Future login(String email, String password) async {
     AuthResult authResult = await _auth
-        .signInWithEmailAndPassword(email: null, password: null)
+        .signInWithEmailAndPassword(email: email, password: password)
         .catchError((e) => {print(e.toString())});
     FirebaseUser user = authResult.user;
-    return user;
+    return _user(user);
+  }
+
+  // Sign Out
+  Future signOut() async {
+    await _auth.signOut().catchError((e) => {print(e.toString())});
   }
 }

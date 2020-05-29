@@ -24,23 +24,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   PanelController panelController = new PanelController();
 
-  // void login() async {
-  //   final FirebaseUser user = (await auth.signInWithEmailAndPassword(
-  //     email: emailController.text,
-  //     password: passwordController.text,
-  //   ))
-  //       .user;
-
-  //   if (user != null) {
-  //     success = true;
-  //     print('LOGGED IN');
-  //     Navigator.of(context).push(
-  //         MaterialPageRoute(builder: (BuildContext context) => HomeScreen()));
-  //   } else {
-  //     success = false;
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
     BorderRadiusGeometry radius = BorderRadius.only(
@@ -80,6 +63,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: TextFormField(
                         controller: emailController,
                         keyboardType: TextInputType.emailAddress,
+                        validator: (value) =>
+                            value.isEmpty || value.contains('@') == false ? 'Enter correct email' : null,
                         cursorColor: Color.fromRGBO(9, 68, 93, 1),
                         decoration: InputDecoration(
                             labelText: 'Enter your email',
@@ -109,6 +94,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: TextFormField(
                         cursorColor: Color.fromRGBO(9, 68, 93, 1),
                         controller: passwordController,
+                        validator: (value) =>
+                            value.length < 6 ? 'Wrong pasword' : null,
                         keyboardType: TextInputType.text,
                         obscureText: true,
                         decoration: InputDecoration(
@@ -139,10 +126,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 70,
                     child: RaisedButton(
                       onPressed: () async {
-                        dynamic result = await _authService
-                            .login()
-                            .catchError((e) => {print(e.toString())});
-                        print('USER: ' + result.uid);
+                        if (_formState.currentState.validate()) {
+                          dynamic result = await _authService
+                              .login(emailController.text, passwordController.text)
+                              .catchError((e) => {print(e.toString())});
+                          print('USER: ' + result.uid);
+                        } else {
+                          return null;
+                        }
                       },
                       color: Colors.white,
                       elevation: 0,
