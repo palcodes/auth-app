@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:makestories_interview/abstractions/auth.dart';
 import 'package:makestories_interview/ui/home.dart';
+
+// SignUp Slide Up on the Login Screen
 
 class SignUpScreen extends StatefulWidget {
   @override
@@ -11,6 +14,7 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   final FirebaseAuth auth = FirebaseAuth.instance;
+  AuthService _authService = new AuthService();
 
   final _formKey = GlobalKey<FormState>();
   TextEditingController nameController = TextEditingController();
@@ -28,14 +32,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   String emailValidator(String value) {
     if (value.isEmpty || !value.contains('@')) {
-      return 'Please enter proper email';
+      return 'Email is mandatory';
     }
     return null;
   }
 
   String numberValidator(String value) {
     if (value.isEmpty) {
-      return 'Enter your phone number';
+      return 'Phone number is mandatory';
     } else {
       return null;
     }
@@ -43,7 +47,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   String passwordValidator(String value) {
     if (value.length <= 6) {
-      return 'Enter more than 6 characters';
+      return 'Password should be more than 6 characters';
     }
     return null;
   }
@@ -240,7 +244,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
               width: 350,
               height: 60,
               child: RaisedButton(
-                onPressed: signUp,
+                onPressed: () async {
+                  AuthService().signUp(emailController.text, passwordController.text);
+                },
                 color: Color.fromRGBO(9, 68, 93, 1),
                 elevation: 0,
                 child: Text(
