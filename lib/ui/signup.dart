@@ -54,198 +54,201 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(children: <Widget>[
-      Container(
-          alignment: Alignment.center,
-          margin: EdgeInsets.only(top: 7),
-          child: Text(
-            'Tell us about you',
-            style: GoogleFonts.workSans(
-                color: Color.fromRGBO(9, 68, 93, 1),
-                fontSize: 30,
-                fontWeight: FontWeight.w600),
-          )),
-      Form(
-        key: _formKey,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Container(
-                width: 350,
-                margin: EdgeInsets.only(top: 40),
-                child: TextFormField(
-                  controller: nameController,
-                  validator: nameValidator,
-                  keyboardType: TextInputType.text,
-                  cursorColor: Color.fromRGBO(9, 68, 93, 1),
-                  decoration: InputDecoration(
-                      labelText: 'Enter your name',
-                      labelStyle: GoogleFonts.workSans(
-                          fontSize: 18, fontWeight: FontWeight.w300),
-                      filled: true,
-                      fillColor: Colors.white,
-                      focusedBorder: OutlineInputBorder(
+    return Scaffold(
+      body: ListView(children: <Widget>[
+        Container(
+            alignment: Alignment.center,
+            margin: EdgeInsets.only(top: 7),
+            child: Text(
+              'Tell us about you',
+              style: GoogleFonts.workSans(
+                  color: Color.fromRGBO(9, 68, 93, 1),
+                  fontSize: 30,
+                  fontWeight: FontWeight.w600),
+            )),
+        Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                  width: 350,
+                  margin: EdgeInsets.only(top: 40),
+                  child: TextFormField(
+                    controller: nameController,
+                    validator: nameValidator,
+                    keyboardType: TextInputType.text,
+                    cursorColor: Color.fromRGBO(9, 68, 93, 1),
+                    decoration: InputDecoration(
+                        labelText: 'Enter your name',
+                        labelStyle: GoogleFonts.workSans(
+                            fontSize: 18, fontWeight: FontWeight.w300),
+                        filled: true,
+                        fillColor: Colors.white,
+                        focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: BorderSide(
+                              color: Color.fromRGBO(9, 68, 93, 1),
+                            )),
+                        focusColor: Color.fromRGBO(9, 68, 93, 1),
+                        prefixIcon: Icon(
+                          Icons.person,
+                          color: Color.fromRGBO(9, 68, 93, 1),
+                        ),
+                        border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide(
-                            color: Color.fromRGBO(9, 68, 93, 1),
-                          )),
-                      focusColor: Color.fromRGBO(9, 68, 93, 1),
-                      prefixIcon: Icon(
-                        Icons.person,
-                        color: Color.fromRGBO(9, 68, 93, 1),
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        borderSide: BorderSide(),
-                      )),
-                )),
-            Container(
-                width: 350,
-                margin: EdgeInsets.only(top: 10),
-                child: TextFormField(
-                  controller: emailController,
-                  validator: emailValidator,
-                  keyboardType: TextInputType.emailAddress,
-                  cursorColor: Color.fromRGBO(9, 68, 93, 1),
-                  decoration: InputDecoration(
-                      labelText: 'Enter your email',
-                      labelStyle: GoogleFonts.workSans(
-                          fontSize: 18, fontWeight: FontWeight.w300),
-                      filled: true,
-                      fillColor: Colors.white,
-                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(),
+                        )),
+                  )),
+              Container(
+                  width: 350,
+                  margin: EdgeInsets.only(top: 10),
+                  child: TextFormField(
+                    controller: emailController,
+                    validator: emailValidator,
+                    keyboardType: TextInputType.emailAddress,
+                    cursorColor: Color.fromRGBO(9, 68, 93, 1),
+                    decoration: InputDecoration(
+                        labelText: 'Enter your email',
+                        labelStyle: GoogleFonts.workSans(
+                            fontSize: 18, fontWeight: FontWeight.w300),
+                        filled: true,
+                        fillColor: Colors.white,
+                        focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: BorderSide(
+                              color: Color.fromRGBO(9, 68, 93, 1),
+                            )),
+                        focusColor: Color.fromRGBO(9, 68, 93, 1),
+                        prefixIcon: Icon(
+                          Icons.mail,
+                          color: Color.fromRGBO(9, 68, 93, 1),
+                        ),
+                        border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide(
-                            color: Color.fromRGBO(9, 68, 93, 1),
-                          )),
-                      focusColor: Color.fromRGBO(9, 68, 93, 1),
-                      prefixIcon: Icon(
-                        Icons.mail,
-                        color: Color.fromRGBO(9, 68, 93, 1),
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        borderSide: BorderSide(),
-                      )),
-                )),
-            Container(
-                width: 350,
-                margin: EdgeInsets.only(top: 10),
-                child: TextFormField(
-                  controller: numberController,
-                  validator: numberValidator,
-                  keyboardType: TextInputType.number,
-                  cursorColor: Color.fromRGBO(9, 68, 93, 1),
-                  decoration: InputDecoration(
-                      labelText: 'Enter your phone number',
-                      labelStyle: GoogleFonts.workSans(
-                          fontSize: 18, fontWeight: FontWeight.w300),
-                      filled: true,
-                      fillColor: Colors.white,
-                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(),
+                        )),
+                  )),
+              Container(
+                  width: 350,
+                  margin: EdgeInsets.only(top: 10),
+                  child: TextFormField(
+                    controller: numberController,
+                    validator: numberValidator,
+                    keyboardType: TextInputType.number,
+                    cursorColor: Color.fromRGBO(9, 68, 93, 1),
+                    decoration: InputDecoration(
+                        labelText: 'Enter your phone number',
+                        labelStyle: GoogleFonts.workSans(
+                            fontSize: 18, fontWeight: FontWeight.w300),
+                        filled: true,
+                        fillColor: Colors.white,
+                        focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: BorderSide(
+                              color: Color.fromRGBO(9, 68, 93, 1),
+                            )),
+                        focusColor: Color.fromRGBO(9, 68, 93, 1),
+                        prefixIcon: Icon(
+                          Icons.call,
+                          color: Color.fromRGBO(9, 68, 93, 1),
+                        ),
+                        border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide(
-                            color: Color.fromRGBO(9, 68, 93, 1),
-                          )),
-                      focusColor: Color.fromRGBO(9, 68, 93, 1),
-                      prefixIcon: Icon(
-                        Icons.call,
-                        color: Color.fromRGBO(9, 68, 93, 1),
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        borderSide: BorderSide(),
-                      )),
-                )),
-            Container(
-                width: 350,
-                margin: EdgeInsets.only(top: 10),
-                child: TextFormField(
-                  controller: ageController,
-                  keyboardType: TextInputType.number,
-                  cursorColor: Color.fromRGBO(9, 68, 93, 1),
-                  decoration: InputDecoration(
-                      labelText: 'Enter your age',
-                      labelStyle: GoogleFonts.workSans(
-                          fontSize: 18, fontWeight: FontWeight.w300),
-                      filled: true,
-                      fillColor: Colors.white,
-                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(),
+                        )),
+                  )),
+              Container(
+                  width: 350,
+                  margin: EdgeInsets.only(top: 10),
+                  child: TextFormField(
+                    controller: ageController,
+                    keyboardType: TextInputType.number,
+                    cursorColor: Color.fromRGBO(9, 68, 93, 1),
+                    decoration: InputDecoration(
+                        labelText: 'Enter your age',
+                        labelStyle: GoogleFonts.workSans(
+                            fontSize: 18, fontWeight: FontWeight.w300),
+                        filled: true,
+                        fillColor: Colors.white,
+                        focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: BorderSide(
+                              color: Color.fromRGBO(9, 68, 93, 1),
+                            )),
+                        focusColor: Color.fromRGBO(9, 68, 93, 1),
+                        prefixIcon: Icon(
+                          Icons.assignment_turned_in,
+                          color: Color.fromRGBO(9, 68, 93, 1),
+                        ),
+                        border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide(
-                            color: Color.fromRGBO(9, 68, 93, 1),
-                          )),
-                      focusColor: Color.fromRGBO(9, 68, 93, 1),
-                      prefixIcon: Icon(
-                        Icons.assignment_turned_in,
-                        color: Color.fromRGBO(9, 68, 93, 1),
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        borderSide: BorderSide(),
-                      )),
-                )),
-            Container(
-                width: 350,
-                margin: EdgeInsets.only(top: 10),
-                child: TextFormField(
-                  controller: passwordController,
-                  validator: passwordValidator,
-                  keyboardType: TextInputType.text,
-                  cursorColor: Color.fromRGBO(9, 68, 93, 1),
-                  decoration: InputDecoration(
-                      labelText: 'Enter a new password',
-                      labelStyle: GoogleFonts.workSans(
-                          fontSize: 18, fontWeight: FontWeight.w300),
-                      filled: true,
-                      fillColor: Colors.white,
-                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(),
+                        )),
+                  )),
+              Container(
+                  width: 350,
+                  margin: EdgeInsets.only(top: 10),
+                  child: TextFormField(
+                    controller: passwordController,
+                    validator: passwordValidator,
+                    keyboardType: TextInputType.text,
+                    cursorColor: Color.fromRGBO(9, 68, 93, 1),
+                    decoration: InputDecoration(
+                        labelText: 'Enter a new password',
+                        labelStyle: GoogleFonts.workSans(
+                            fontSize: 18, fontWeight: FontWeight.w300),
+                        filled: true,
+                        fillColor: Colors.white,
+                        focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: BorderSide(
+                              color: Color.fromRGBO(9, 68, 93, 1),
+                            )),
+                        focusColor: Color.fromRGBO(9, 68, 93, 1),
+                        prefixIcon: Icon(
+                          Icons.vpn_key,
+                          color: Color.fromRGBO(9, 68, 93, 1),
+                        ),
+                        border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide(
-                            color: Color.fromRGBO(9, 68, 93, 1),
-                          )),
-                      focusColor: Color.fromRGBO(9, 68, 93, 1),
-                      prefixIcon: Icon(
-                        Icons.vpn_key,
-                        color: Color.fromRGBO(9, 68, 93, 1),
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        borderSide: BorderSide(),
-                      )),
-                )),
-            Container(
-              margin: EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 10),
-              width: 350,
-              height: 60,
-              child: RaisedButton(
-                onPressed: () async {
-                  AuthService().signUp(
-                      nameController.text,
-                      emailController.text,
-                      passwordController.text,
-                      numberController.text,
-                      ageController.text);
-                },
-                color: Color.fromRGBO(9, 68, 93, 1),
-                elevation: 0,
-                child: Text(
-                  'Sign Up',
-                  style: GoogleFonts.workSans(
-                      color: Colors.white,
-                      fontSize: 25,
-                      fontWeight: FontWeight.w600),
+                          borderSide: BorderSide(),
+                        )),
+                  )),
+              Container(
+                margin:
+                    EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 10),
+                width: 350,
+                height: 60,
+                child: RaisedButton(
+                  onPressed: () async {
+                    AuthService().signUp(
+                        nameController.text,
+                        emailController.text,
+                        passwordController.text,
+                        numberController.text,
+                        ageController.text);
+                  },
+                  color: Color.fromRGBO(9, 68, 93, 1),
+                  elevation: 0,
+                  child: Text(
+                    'Sign Up',
+                    style: GoogleFonts.workSans(
+                        color: Colors.white,
+                        fontSize: 25,
+                        fontWeight: FontWeight.w600),
+                  ),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      side: BorderSide(
+                          color: Color.fromRGBO(9, 68, 93, 1), width: 3)),
                 ),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    side: BorderSide(
-                        color: Color.fromRGBO(9, 68, 93, 1), width: 3)),
-              ),
-            )
-          ],
-        ),
-      )
-    ]);
+              )
+            ],
+          ),
+        )
+      ]),
+    );
   }
 
   @override
