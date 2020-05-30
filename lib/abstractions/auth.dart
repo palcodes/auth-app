@@ -61,6 +61,7 @@ class AuthService {
         default:
           Fluttertoast.showToast(msg: "An undefined Error has occured");
       }
+      return null;
     }
   }
 
@@ -97,6 +98,7 @@ class AuthService {
         default:
           Fluttertoast.showToast(msg: "An undefined Error occured");
       }
+      return null;
     }
   }
 

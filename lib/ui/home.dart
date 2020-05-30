@@ -20,19 +20,6 @@ class _HomeScreenState extends State<HomeScreen> {
   final TextEditingController ageController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
 
-  Future getData() async {
-    FirebaseUser user = await FirebaseAuth.instance.currentUser();
-    String userId = user.uid;
-    final userInfo = Firestore.instance
-        .collection('users')
-        .document(userId)
-        .get()
-        .then((DocumentSnapshot ds) {
-      return ds;
-    });
-    return userInfo;
-  }
-
   void updateData() async {
     FirebaseUser user = await FirebaseAuth.instance.currentUser();
     String userId = user.uid;
