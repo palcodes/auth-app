@@ -228,6 +228,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         passwordController.text,
                         numberController.text,
                         ageController.text);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HomeScreen(),
+                        ));
                   },
                   color: Color.fromRGBO(9, 68, 93, 1),
                   elevation: 0,
