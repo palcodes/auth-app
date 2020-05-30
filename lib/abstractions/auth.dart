@@ -15,7 +15,7 @@ class AuthService {
       );
     } else {
       Fluttertoast.showToast(
-          msg: "Couldn't find User",
+          msg: "User not logged in",
           backgroundColor: Colors.white,
           fontSize: 12,
           gravity: ToastGravity.BOTTOM,
