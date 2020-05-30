@@ -77,8 +77,10 @@ class _HomeScreenState extends State<HomeScreen> {
               stream: DatabaseService(uid: user.uid).userData,
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(
-                    child: Text('Getting data',
+                  return Container(
+                    margin: EdgeInsets.only(top: 250),
+                    alignment: Alignment.center,
+                    child: Text('Getting data..',
                         style: GoogleFonts.workSans(
                             fontSize: 20, fontWeight: FontWeight.w700)),
                   );
@@ -86,85 +88,103 @@ class _HomeScreenState extends State<HomeScreen> {
                   return Container(
                     margin: EdgeInsets.all(15),
                     padding: EdgeInsets.all(12),
-                    child: Column(
-                      children: <Widget>[
-                        Form(
-                          key: _formKey,
-                          child: Container(
-                            margin: EdgeInsets.only(top: 50),
-                            child: TextFormField(
-                              // initialValue: snapshot.data['name'] ?? 'Enter name',
-                              controller: nameController,
-                              decoration: InputDecoration(
-                                  labelText:
-                                      snapshot.data.name ?? 'Enter your Name',
-                                  border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(12))),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(top: 20),
-                          child: TextFormField(
-                            // initialValue: snapshot.data['email'] ?? 'Enter email',
-                            controller: emailController,
-                            decoration: InputDecoration(
-                                labelText: snapshot.data.email == null
-                                    ? 'Ent'
-                                    : 'Enter your email',
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(12))),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(top: 20),
-                          child: TextFormField(
-                            // initialValue: snapshot.data['number'] ?? 'Enter email',
-                            controller: numberController,
-                            decoration: InputDecoration(
-                                labelText: snapshot.data.number ??
-                                    'Enter your phone number',
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(12))),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(top: 20),
-                          child: TextFormField(
-                            // initialValue: snapshot.data['age'] ?? 'Enter email',
-                            controller: ageController,
-                            decoration: InputDecoration(
-                                labelText:
-                                    snapshot.data.age ?? 'Enter your age',
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(12))),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(
-                              top: 80, left: 20, right: 20, bottom: 10),
-                          width: 350,
-                          height: 60,
-                          child: RaisedButton(
-                            onPressed: updateData,
-                            color: Colors.white,
-                            elevation: 0,
-                            child: Text(
-                              'Update Info',
-                              style: GoogleFonts.workSans(
-                                  color: Color.fromRGBO(9, 68, 93, 1),
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.w600),
-                            ),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12),
-                                side: BorderSide(
-                                    color: Color.fromRGBO(9, 68, 93, 1),
-                                    width: 3)),
-                          ),
-                        )
-                      ],
-                    ),
+                    child: Form(
+                        key: _formKey,
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Container(
+                                margin: EdgeInsets.only(top: 50),
+                                child: TextFormField(
+                                  // initialValue: snapshot.data['name'] ?? 'Enter name',
+                                  controller: nameController,
+                                  decoration: InputDecoration(
+                                      labelStyle: GoogleFonts.workSans(
+                                        fontSize: 18,
+                                        color: Color.fromRGBO(9, 68, 93, 1),
+                                      ),
+                                      labelText: snapshot.data.name ??
+                                          'Enter your Name',
+                                      border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(12))),
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(top: 20),
+                                child: TextFormField(
+                                  // initialValue: snapshot.data['email'] ?? 'Enter email',
+                                  controller: emailController,
+                                  decoration: InputDecoration(
+                                      labelStyle: GoogleFonts.workSans(
+                                        fontSize: 18,
+                                        color: Color.fromRGBO(9, 68, 93, 1),
+                                      ),
+                                      labelText: snapshot.data.email ??
+                                          'Enter your email',
+                                      border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(12))),
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(top: 20),
+                                child: TextFormField(
+                                  // initialValue: snapshot.data['number'] ?? 'Enter email',
+                                  controller: numberController,
+                                  decoration: InputDecoration(
+                                      labelStyle: GoogleFonts.workSans(
+                                        fontSize: 18,
+                                        color: Color.fromRGBO(9, 68, 93, 1),
+                                      ),
+                                      labelText: snapshot.data.number ??
+                                          'Enter your phone number',
+                                      border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(12))),
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(top: 20),
+                                child: TextFormField(
+                                  // initialValue: snapshot.data['age'] ?? 'Enter email',
+                                  controller: ageController,
+                                  decoration: InputDecoration(
+                                      labelStyle: GoogleFonts.workSans(
+                                        fontSize: 18,
+                                        color: Color.fromRGBO(9, 68, 93, 1),
+                                      ),
+                                      labelText:
+                                          snapshot.data.age ?? 'Enter your age',
+                                      border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(12))),
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(
+                                    top: 80, left: 20, right: 20, bottom: 10),
+                                width: 350,
+                                height: 60,
+                                child: RaisedButton(
+                                  onPressed: updateData,
+                                  color: Colors.white,
+                                  elevation: 0,
+                                  child: Text(
+                                    'Update Info',
+                                    style: GoogleFonts.workSans(
+                                        color: Color.fromRGBO(9, 68, 93, 1),
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(12),
+                                      side: BorderSide(
+                                          color: Color.fromRGBO(9, 68, 93, 1),
+                                          width: 3)),
+                                ),
+                              )
+                            ])),
                   );
                 }
               })

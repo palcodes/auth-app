@@ -13,7 +13,6 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   final FirebaseAuth auth = FirebaseAuth.instance;
-  AuthService _authService = new AuthService();
 
   final _formKey = GlobalKey<FormState>();
   TextEditingController nameController = TextEditingController();
