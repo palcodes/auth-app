@@ -9,17 +9,20 @@ class AuthService {
 
   // Create User object
   User _user(FirebaseUser user) {
-    return user != null
-        ? User(
-            uid: user.uid,
-          )
-        : Fluttertoast.showToast(
-            msg: "Couldn't find User",
-            backgroundColor: Colors.white,
-            fontSize: 12,
-            gravity: ToastGravity.BOTTOM,
-            toastLength: Toast.LENGTH_SHORT,
-            textColor: Color.fromRGBO(9, 68, 93, 1));
+    if (user != null) {
+      return User(
+        uid: user.uid,
+      );
+    } else {
+      Fluttertoast.showToast(
+          msg: "Couldn't find User",
+          backgroundColor: Colors.white,
+          fontSize: 12,
+          gravity: ToastGravity.BOTTOM,
+          toastLength: Toast.LENGTH_SHORT,
+          textColor: Color.fromRGBO(9, 68, 93, 1));
+      return null;
+    }
   }
 
   // Auth change User Stream
