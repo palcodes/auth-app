@@ -71,7 +71,9 @@ class _HomeScreenState extends State<HomeScreen> {
             alignment: Alignment.center,
             child: Text('About you',
                 style: GoogleFonts.workSans(
-                    fontSize: 30, fontWeight: FontWeight.w600)),
+                    color: Color.fromRGBO(9, 68, 93, 1),
+                    fontSize: 30,
+                    fontWeight: FontWeight.w600)),
           ),
           StreamBuilder<User>(
               stream: DatabaseService(uid: user.uid).userData,
@@ -82,7 +84,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     alignment: Alignment.center,
                     child: Text('Getting data..',
                         style: GoogleFonts.workSans(
-                            fontSize: 20, fontWeight: FontWeight.w700)),
+                            color: Color.fromRGBO(9, 68, 93, 1),
+                            fontSize: 20,
+                            fontWeight: FontWeight.w700)),
                   );
                 } else {
                   return Container(

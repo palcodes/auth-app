@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:makestories_interview/abstractions/auth.dart';
+import 'package:makestories_interview/ui/home.dart';
 import 'package:makestories_interview/ui/signup.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
@@ -25,6 +26,11 @@ class _LoginScreenState extends State<LoginScreen> {
   loginUser() async {
     if (_formState.currentState.validate()) {
       await _authService.login(emailController.text, passwordController.text);
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => HomeScreen(),
+          ));
     } else {
       return null;
     }
