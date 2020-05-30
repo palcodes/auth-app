@@ -39,14 +39,28 @@ class AuthService {
       FirebaseUser user = authResult.user;
       await DatabaseService().storeUserData(name, email, number, age);
       return _user(user);
-    } catch (e) {
-      Fluttertoast.showToast(
-          msg: "User couldn't be created, check fields",
-          backgroundColor: Colors.white,
-          fontSize: 12,
-          gravity: ToastGravity.BOTTOM,
-          toastLength: Toast.LENGTH_SHORT,
-          textColor: Color.fromRGBO(9, 68, 93, 1));
+    } catch (error) {
+      switch (error.code) {
+        case "ERROR_OPERATION_NOT_ALLOWED":
+          Fluttertoast.showToast(msg: "Anonymous accounts are not enabled");
+          break;
+        case "ERROR_WEAK_PASSWORD":
+          Fluttertoast.showToast(msg: "Your password is too weak");
+          break;
+        case "ERROR_INVALID_EMAIL":
+          Fluttertoast.showToast(msg: "Your email is invalid");
+          break;
+        case "ERROR_EMAIL_ALREADY_IN_USE":
+          Fluttertoast.showToast(
+              msg: "Email is already in use on different account");
+          break;
+        case "ERROR_INVALID_CREDENTIAL":
+          Fluttertoast.showToast(msg: "Your email is invalid");
+          break;
+
+        default:
+          Fluttertoast.showToast(msg: "An undefined Error has occured");
+      }
     }
   }
 
