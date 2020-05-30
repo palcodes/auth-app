@@ -31,13 +31,13 @@ class AuthService {
   }
 
   // Sign up with Email
-  Future<User> signUp(String name, String email, String number, String password,
+  Future<User> signUp(String name, String email, String password, String number,
       String age) async {
     try {
       AuthResult authResult = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       FirebaseUser user = authResult.user;
-      await DatabaseService().storeUserData(name, email, number, age);
+      await DatabaseService(uid: user.uid).storeUserData(name, email, number, age);
       return _user(user);
     } catch (error) {
       switch (error.code) {
