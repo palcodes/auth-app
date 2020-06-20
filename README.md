@@ -12,3 +12,4 @@ A few steps to get you started:
 
 ## Check out the design
 
+![Design is supposed to show up here!](designMock.png)
